@@ -17,9 +17,5 @@ class DatabaseSeeder extends Seeder
         $lessons = Lesson::factory()
             ->count(20)
             ->create();
-        // seed a single user
-        $users = User::factory()
-            ->count(1)
-            ->create();
     }
 }
