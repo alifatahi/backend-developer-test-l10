@@ -19,10 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/login', function () {
+    return "Login page";
+})->name('login');
+
 Route::get('/tokens/create', function () {
     // create a sample token for first user
     $user = Auth::loginUsingId(1);
-    $token = $user->createToken(request()->token_name);
+    $token = $user->createToken('test01');
     return ['token' => $token->plainTextToken];
 });
 
@@ -30,5 +34,4 @@ Route::get('/tokens/create', function () {
 Route::group(['prefix'=> 'users', 'middleware'=> ['auth:sanctum']], function () {
     // user achievements
     Route::get('{user}/achievements', [AchievementsController::class, 'index']);
-
 });
