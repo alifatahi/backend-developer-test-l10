@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Badge;
 use App\Models\Lesson;
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,5 +17,10 @@ class DatabaseSeeder extends Seeder
         $lessons = Lesson::factory()
             ->count(20)
             ->create();
+
+        Badge::create(['name' => 'Beginner']);
+        Badge::create(['name' => 'Intermediate']);
+        Badge::create(['name' => 'Advanced']);
+        Badge::create(['name' => 'Master']);
     }
 }
