@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AchievementsController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\TokenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,12 +23,7 @@ Route::get('/login', function () {
     return "Login page";
 })->name('login');
 
-Route::get('/tokens/create', function () {
-    // create a sample token for first user
-    $user = Auth::loginUsingId(1);
-    $token = $user->createToken('test01');
-    return ['token' => $token->plainTextToken];
-});
+Route::post('/tokens/create', [TokenController::class, 'create']);
 
 //SECTION - users
 Route::group(['prefix'=> 'users', 'middleware'=> ['auth:sanctum']], function () {

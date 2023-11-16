@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use Hash;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -14,9 +15,16 @@ class GetAchievementsTest extends TestCase
     public function test_the_get_achievements_returns_a_successful_response()
     {
         // Create User
-        $user = User::factory()->create();
-        $response = $this->get('/tokens/create');
-
+        $password = '1234567890';
+        $user = User::factory()->create([
+            'password' => Hash::make($password),
+        ]);
+        // send auth to get token
+        $response = $this->postJson('/tokens/create', [
+            'email' => $user->email,
+            'password' => $password,
+        ]);
+        // assert for the response 200 and the token
         $response->assertStatus(200)
             ->assertJsonStructure(['token']);
 
