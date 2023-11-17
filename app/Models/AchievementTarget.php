@@ -13,4 +13,9 @@ class AchievementTarget extends Model
         'achievement_id',
         'target',
     ];
+
+    public function achievement(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Achievement::class);
+    }
 }

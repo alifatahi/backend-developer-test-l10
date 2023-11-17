@@ -12,4 +12,9 @@ class Badge extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function badgeTargets(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(BadgeTarget::class);
+    }
 }
