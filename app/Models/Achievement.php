@@ -14,6 +14,7 @@ class Achievement extends Model
         'code',
     ];
 
+    // Define the relationship to the AchievementTarget model.
     public function achievementTargets(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(AchievementTarget::class);

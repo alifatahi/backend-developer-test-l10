@@ -13,6 +13,7 @@ class Badge extends Model
         'name',
     ];
 
+    // Define the relationship to the BadgeTarget model.
     public function badgeTargets(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(BadgeTarget::class);
