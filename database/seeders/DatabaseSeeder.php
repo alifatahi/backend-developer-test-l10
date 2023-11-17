@@ -27,7 +27,17 @@ class DatabaseSeeder extends Seeder
         Badge::create(['name' => 'Master']);
 
         // Achivements
-        Achievement::create(['name' => 'Lessons Watched']);
-        Achievement::create(['name' => 'Comments Written']);
+        Achievement::create([
+            'name' => 'Lessons Watched',
+            'code' => 'lesson-watch',
+        ]);
+        Achievement::create([
+            'name' => 'Comments Written',
+            'code' => 'comment-write',
+        ]);
+
+        // Badge Targets
+
+        // Achivement Targets
     }
 }
