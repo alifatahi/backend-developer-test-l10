@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('achievement_id');
-            $table->integet('level'); // defines that which level of each achievement riched
+            $table->integer('level'); // defines that which level of each achievement riched
             $table->timestamps();
 
             // foreign keys
