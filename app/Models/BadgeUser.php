@@ -14,14 +14,18 @@ class BadgeUser extends Model
         'badge_id',
     ];
 
-    // Define the relationship to the User model.
-    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    /**
+     * Define the relationship to the User model.
+     */
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    // Define the relationship to the Badge model.
-    public function badge(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    /**
+     * Define the relationship to the Badge model.
+     */
+    public function badge()
     {
         return $this->belongsTo(Badge::class);
     }

@@ -8,6 +8,7 @@ use App\Models\Badge;
 use App\Models\BadgeTarget;
 use App\Models\Lesson;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -43,6 +44,11 @@ class DatabaseSeeder extends Seeder
         $lessons = Lesson::factory()
             ->count(20)
             ->create();
+
+        User::factory()
+            ->create([
+                'password' => \Hash::make('12345678')
+            ]);
 
         // Badges
         foreach ($this->badgeList as $badgeName => $target) {

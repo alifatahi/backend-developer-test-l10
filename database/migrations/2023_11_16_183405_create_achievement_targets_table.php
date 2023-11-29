@@ -13,12 +13,9 @@ return new class extends Migration
     {
         Schema::create('achievement_targets', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('achievement_id');
+            $table->foreignId('achievement_id')->constrained();
             $table->integer('target');
             $table->timestamps();
-
-            // Define foreign key
-            $table->foreign('achievement_id')->references('id')->on('achievements')->onDelete('cascade');
         });
     }
 

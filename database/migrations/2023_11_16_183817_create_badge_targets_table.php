@@ -13,12 +13,9 @@ return new class extends Migration
     {
         Schema::create('badge_targets', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('badge_id');
+            $table->foreignId('badge_id')->constrained();
             $table->integer('target');
             $table->timestamps();
-
-            // Define foreign key
-            $table->foreign('badge_id')->references('id')->on('badges')->onDelete('cascade');
         });
     }
 

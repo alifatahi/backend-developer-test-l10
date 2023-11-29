@@ -14,8 +14,10 @@ class AchievementTarget extends Model
         'target',
     ];
 
-    // Define the relationship to the Achievement model.
-    public function achievement(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    /**
+     * Define the relationship to the Achievement model.
+     */
+    public function achievement()
     {
         return $this->belongsTo(Achievement::class);
     }

@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('badge_user', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('badge_id');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('badge_id')->constrained();
+            // the "is_last" field defines that this badge is the last badge of a user in its similar badges
+            // old similar badges has been kept to save the history
+            $table->boolean('is_last')->default(true);
             $table->timestamps();
-
-            // foreign keys
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('badge_id')->references('id')->on('badges')->onDelete('cascade');
         });
     }
 

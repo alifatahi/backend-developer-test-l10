@@ -15,13 +15,17 @@ class AchievementUser extends Model
         'level',
     ];
 
-    // Define the relationship to the User model.
+    /**
+     * Define the relationship to the User model.
+     */
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    // Define the relationship to the Achievement model.
+    /**
+     * Define the relationship to the Achievement model.
+     */
     public function achievement(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Achievement::class);

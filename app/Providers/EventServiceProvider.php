@@ -2,6 +2,11 @@
 
 namespace App\Providers;
 
+use App\Events\AchievementUnlocked;
+use App\Events\CommentWritten;
+use App\Events\LessonWatched;
+use App\Listeners\CheckForNewAchievement;
+use App\Listeners\CheckForNewBadge;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -15,6 +20,16 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
+        CommentWritten::class => [
+            CheckForNewAchievement::class,
+        ],
+        LessonWatched::class => [
+            CheckForNewAchievement::class,
+        ],
+        AchievementUnlocked::class => [
+            CheckForNewBadge::class,
+        ],
+
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],

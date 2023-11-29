@@ -14,8 +14,10 @@ class BadgeTarget extends Model
         'target',
     ];
 
-    // Define the relationship to the Badge model.
-    public function badge(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    /**
+     * Define the relationship to the Badge model.
+     */
+    public function badge()
     {
         return $this->belongsTo(Badge::class);
     }
